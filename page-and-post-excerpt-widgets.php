@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Post and Page Excerpt Widgets
-Plugin URI: http://sillybean.net/code/
+Plugin URI: http://www.sillybean.net/code/post-and-page-excerpt-widgets/
 Description: Creates widgets that display excerpts from posts or pages in the sidebar. You may use 'more' links and/or link the widget title to the post or page. Based on Milan Petrovic's <a href="http://wp.gdragon.info/2008/07/06/create-multi-instances-widget/">Multi Instance Widget</a>. Requires <a href="http://blog.ftwr.co.uk/wordpress/page-excerpt/">Page Excerpt</a> for page excerpts. Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">The Excerpt Reloaded</a>.
 Version: 1.1
 Author: Stephanie Leary
