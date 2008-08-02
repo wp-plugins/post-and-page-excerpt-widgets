@@ -3,7 +3,7 @@
 Plugin Name: Post and Page Excerpt Widgets
 Plugin URI: http://sillybean.net/code/
 Description: Creates widgets that display excerpts from posts or pages in the sidebar. You may use 'more' links and/or link the widget title to the post or page. Based on Milan Petrovic's <a href="http://wp.gdragon.info/2008/07/06/create-multi-instances-widget/">Multi Instance Widget</a>. Requires <a href="http://blog.ftwr.co.uk/wordpress/page-excerpt/">Page Excerpt</a> for page excerpts. Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">The Excerpt Reloaded</a>.
-Version: 1.0
+Version: 1.1
 Author: Stephanie Leary
 Author URI: http://sillybean.net/
 */
@@ -63,6 +63,8 @@ class PageExcerptMulti {
         $options = $options_all[$number];
 		$permalink = get_permalink($options['page_ID']);
 
+		$oldpost = $post;
+
         echo $before_widget.$before_title;
 		if (!empty($options['postlink'])) echo '<a href="'.$permalink.'">';
         echo $options["title"];
@@ -71,6 +73,8 @@ class PageExcerptMulti {
 		echo $this->render_pages($options['page_ID'], $options['words'], $options['tags']);
 		if (!empty($options['more_text'])) echo '<p class="more_link"><a href="'.$permalink.'">'.$options['more_text'].'</a></p>';
         echo $after_widget;
+
+		$post = $oldpost;
     }
 
     function control($widget_args = 1) {
@@ -95,6 +99,7 @@ class PageExcerptMulti {
                 $this_sidebar = array();
 
             foreach ($this_sidebar as $_widget_id) {
+
                 if ('page_widget_excerpt_multi' == $wp_registered_widgets[$_widget_id]['callback'] && isset($wp_registered_widgets[$_widget_id]['params'][0]['number'])) {
                     $widget_number = $wp_registered_widgets[$_widget_id]['params'][0]['number'];
                     if (!in_array("pageexcerptmulti-$widget_number", $_POST['widget-id']))
@@ -228,6 +233,8 @@ class PostExcerptMulti {
         $options = $options_all[$number];
 		$permalink = get_permalink($options['post_ID']);
 
+		$oldpost = $post;
+
         echo $before_widget.$before_title;
 		if (!empty($options['postlink'])) echo '<a href="'.$permalink.'">';
         echo $options["title"];
@@ -236,6 +243,8 @@ class PostExcerptMulti {
 		echo $this->render_pages($options['post_ID'], $options['words'], $options['tags']);
 		if (!empty($options['more_text'])) echo '<p class="more_link"><a href="'.$permalink.'">'.$options['more_text'].'</a></p>';
         echo $after_widget;
+
+		$post = $oldpost;
     }
 
     function control($widget_args = 1) {
