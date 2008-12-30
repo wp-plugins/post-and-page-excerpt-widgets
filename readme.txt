@@ -2,7 +2,7 @@
 Contributors: sillybean
 Tags: widgets, excerpts
 Requires at least: 2.3
-Tested up to: 2.6
+Tested up to: 2.7
 Stable tag: 1.1
 
 
@@ -10,7 +10,7 @@ Creates widgets that display excerpts from posts or pages in the sidebar.
 
 == Description ==
 
-Creates widgets that display excerpts from posts or pages in the sidebar. You may use 'more' links and/or link the widget title to the post or page.  Requires <a href="http://blog.ftwr.co.uk/wordpress/page-excerpt/">Page Excerpt</a> for page excerpts. Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">The Excerpt Reloaded</a>.
+Creates widgets that display excerpts from posts or pages in the sidebar. You may use 'more' links and/or link the widget title to the post or page.  Requires <a href="http://blog.ftwr.co.uk/wordpress/page-excerpt/">Page Excerpt</a> for page excerpts. Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">The Excerpt Reloaded</a> and <a href="http://sparepencil.com/code/advanced-excerpt/">Advanced Excerpt</a>.
 
 == Installation ==
 
