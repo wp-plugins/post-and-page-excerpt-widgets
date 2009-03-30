@@ -2,8 +2,8 @@
 /*
 Plugin Name: Post and Page Excerpt Widgets
 Plugin URI: http://www.sillybean.net/code/post-and-page-excerpt-widgets/
-Description: Creates widgets that display excerpts from posts or pages in the sidebar. You may use 'more' links and/or link the widget title to the post or page. Based on Milan Petrovic's <a href="http://wp.gdragon.info/2008/07/06/create-multi-instances-widget/">Multi Instance Widget</a>. Requires <a href="http://blog.ftwr.co.uk/wordpress/page-excerpt/">Page Excerpt</a> for page excerpts. Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">The Excerpt Reloaded</a>.
-Version: 1.1
+Description: Creates widgets that display excerpts from posts or pages in the sidebar. You may use 'more' links and/or link the widget title to the post or page.  Requires <a href="http://blog.ftwr.co.uk/wordpress/page-excerpt/">Page Excerpt</a> or <a href="http://www.laptoptips.ca/projects/wordpress-excerpt-editor/">Excerpt Editor</a> for page excerpts. Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">The Excerpt Reloaded</a> and <a href="http://sparepencil.com/code/advanced-excerpt/">Advanced Excerpt</a>.
+Version: 1.2
 Author: Stephanie Leary
 Author URI: http://sillybean.net/
 */
@@ -17,7 +17,7 @@ class PageExcerptMulti {
 			'postlink' => false,
 			'more_text' => 'more...',
 			'words' => '99999',
-			'tags' => '<p><div><span><a><ul><ol><li><blockquote><cite><em><i><strong><b><h2><h3><h4><h5><h6>'
+			'tags' => '<p><div><span><br><img><a><ul><ol><li><blockquote><cite><em><i><strong><b><h2><h3><h4><h5><h6>'
     );
 
     function PageExcerptMulti() {
@@ -187,7 +187,7 @@ class PostExcerptMulti {
 			'postlink' => false,
 			'more_text' => 'more...',
 			'words' => '99999',
-			'tags' => '<p><div><span><a><ul><ol><li><blockquote><cite><em><i><strong><b><h2><h3><h4><h5><h6>'
+			'tags' => '<p><div><span><br><img><a><ul><ol><li><blockquote><cite><em><i><strong><b><h2><h3><h4><h5><h6>'
     );
 
     function PostExcerptMulti() {
