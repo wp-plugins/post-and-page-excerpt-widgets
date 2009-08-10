@@ -3,7 +3,7 @@
 Plugin Name: Post and Page Excerpt Widgets
 Plugin URI: http://www.sillybean.net/code/post-and-page-excerpt-widgets/
 Description: Creates widgets that display excerpts from posts or pages in the sidebar. You may use 'more' links and/or link the widget title to the post or page.  Requires <a href="http://blog.ftwr.co.uk/wordpress/page-excerpt/">Page Excerpt</a> or <a href="http://www.laptoptips.ca/projects/wordpress-excerpt-editor/">Excerpt Editor</a> for page excerpts. Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">The Excerpt Reloaded</a> and <a href="http://sparepencil.com/code/advanced-excerpt/">Advanced Excerpt</a>.
-Version: 2.0
+Version: 2.1
 Author: Stephanie Leary
 Author URI: http://sillybean.net/
 
@@ -31,7 +31,7 @@ class PageExcerptMulti extends WP_Widget {
 			echo $before_widget;
 			if ( $title) {
 				if (!empty($instance['postlink']))  {
-					$before_title .= '<a href="'.get_permalink($instance['post_ID']).'">';
+					$before_title .= '<a href="'.get_permalink($instance['page_ID']).'">';
 					$after_title .= '</a>';
 				}
 				echo $before_title.$title.$after_title;
@@ -40,18 +40,23 @@ class PageExcerptMulti extends WP_Widget {
 			<ul>
 			<?php 
 			// the Loop
+			wp_reset_query();
 			$page_query = new WP_Query('page_id='.$instance['page_ID']); 
 
 			while ($page_query->have_posts()) : $page_query->the_post(); 
 			// the excerpt of the page
 			if (function_exists('the_excerpt_reloaded')) 
 				the_excerpt_reloaded($instance['words'], $instance['tags'], 'content', FALSE, '', '', '1', '');
-			else the_excerpt(); // this covers Advanced Excerpt as well as the built-in one
+			else {
+				the_excerpt(); // this covers Advanced Excerpt as well as the built-in one
+				_e('<p class="more" title="Continue reading '.$title.'"><a href="'.get_permalink($instance['page_ID']).'">'.$instance['more_text'].'</a></p>'); // 'more' link
+			}
 			endwhile;
 			?>
 			</ul>
 			<?php
 			echo $after_widget;
+			wp_reset_query();
 	}
 	
 	
@@ -79,19 +84,6 @@ class PageExcerptMulti extends WP_Widget {
 				$title = esc_attr( $instance['title'] );		
 				$more = esc_attr( $instance['more_text'] );
 	
-	/* Debug
-	<pre>
-    Old page widget:
-    <?php print_r(get_option('page_widget_excerpt_multi')); ?>
-    Old post widget:
-    <?php print_r(get_option('post_widget_excerpt_multi')); ?>
-    New page widget:
-    <?php print_r(get_option('widget_pageexcerptmulti')); ?>
-    New post widget:
-    <?php print_r(get_option('widget_postexcerptmulti')); ?>
-    </pre>  
-	*/
-	
 	?>  
        
 			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> 
@@ -107,7 +99,7 @@ class PageExcerptMulti extends WP_Widget {
 			</p>
 			<p>
 					<label for="<?php echo $this->get_field_id('postlink'); ?>">Link widget title to page?</label>
-					<input class="widefat" id="<?php echo $this->get_field_id('postlink'); ?>" name="<?php echo $this->get_field_name('postlink'); ?>" type="checkbox" <?php if ($instance['postlink']) { ?> checked="checked" <?php } ?> />
+					<input id="<?php echo $this->get_field_id('postlink'); ?>" name="<?php echo $this->get_field_name('postlink'); ?>" type="checkbox" <?php if ($instance['postlink']) { ?> checked="checked" <?php } ?> />
 			</p>
 			<?php
 			if (function_exists('the_excerpt_reloaded')) { ?>
@@ -149,18 +141,23 @@ class PostExcerptMulti extends WP_Widget {
 			<ul>
 			<?php 				
 			// the Loop
+			wp_reset_query();
 			$post_query = new WP_Query('p='.$instance['post_ID']); 
 
 			while ($post_query->have_posts()) : $post_query->the_post(); 
 			// the excerpt of the post
 			if (function_exists('the_excerpt_reloaded')) 
 				the_excerpt_reloaded($instance['words'], $instance['tags'], 'content', FALSE, '', '', '1', '');
-			else the_excerpt();  // this covers Advanced Excerpt as well as the built-in one
+			else {
+				the_excerpt();  // this covers Advanced Excerpt as well as the built-in one
+				_e('<p class="more" title="Continue reading '.$title.'"><a href="'.get_permalink($instance['post_ID']).'">'.$instance['more_text'].'</a></p>'); // 'more' link
+			}
 			endwhile;
 			?>
 			</ul>
 			<?php
 			echo $after_widget;
+			wp_reset_query();
 	}
 	
 	
@@ -186,20 +183,7 @@ class PostExcerptMulti extends WP_Widget {
 					'words' => '99999',
 					'tags' => '<p><div><span><br><img><a><ul><ol><li><blockquote><cite><em><i><strong><b><h2><h3><h4><h5><h6>') );
 			$title = esc_attr( $instance['title'] );
-			$more = esc_attr( $instance['more_text'] );
-	/* Debug
-	<pre>
-    Old page widget:
-    <?php print_r(get_option('page_widget_excerpt_multi')); ?>
-    Old post widget:
-    <?php print_r(get_option('post_widget_excerpt_multi')); ?>
-    New page widget:
-    <?php print_r(get_option('widget_pageexcerptmulti')); ?>
-    New post widget:
-    <?php print_r(get_option('widget_postexcerptmulti')); ?>
-    </pre>  
-	*/
-	
+			$more = esc_attr( $instance['more_text'] );	
 	?>
    
 			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> 
@@ -215,7 +199,7 @@ class PostExcerptMulti extends WP_Widget {
 			</p>
 			<p>
 					<label for="<?php echo $this->get_field_id('postlink'); ?>">Link widget title to post?</label>
-					<input class="widefat" id="<?php echo $this->get_field_id('postlink'); ?>" name="<?php echo $this->get_field_name('postlink'); ?>" type="checkbox" <?php if ($instance['postlink']) { ?> checked="checked" <?php } ?> />
+					<input id="<?php echo $this->get_field_id('postlink'); ?>" name="<?php echo $this->get_field_name('postlink'); ?>" type="checkbox" <?php if ($instance['postlink']) { ?> checked="checked" <?php } ?> />
 			</p>
 			<?php
 			if (function_exists('the_excerpt_reloaded')) { ?>
