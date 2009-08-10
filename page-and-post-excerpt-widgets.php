@@ -49,7 +49,7 @@ class PageExcerptMulti extends WP_Widget {
 				the_excerpt_reloaded($instance['words'], $instance['tags'], 'content', FALSE, '', '', '1', '');
 			else {
 				the_excerpt(); // this covers Advanced Excerpt as well as the built-in one
-				_e('<p class="more" title="Continue reading '.$title.'"><a href="'.get_permalink($instance['page_ID']).'">'.$instance['more_text'].'</a></p>'; // 'more' link
+				_e('<p class="more" title="Continue reading '.$title.'"><a href="'.get_permalink($instance['page_ID']).'">'.$instance['more_text'].'</a></p>'); // 'more' link
 			}
 			endwhile;
 			?>
