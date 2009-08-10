@@ -2,8 +2,8 @@
 Contributors: sillybean
 Tags: widgets, excerpts
 Requires at least: 2.3
-Tested up to: 2.8.2
-Stable tag: 2.0
+Tested up to: 2.8.3
+Stable tag: 2.1
 
 
 Creates widgets that display excerpts from posts or pages in the sidebar.  
@@ -28,8 +28,8 @@ Go to Design &rarr; Widgets to add widgets to your sidebar in widget-ready theme
 == Changelog ==
 
 = 2.1 =
-* Bug fixed: 'more' text not showing up
-* Bug fixed: excerpt & 'more' link showing the wrong page in page widgets
+* Bug fixed: 'more' text not showing up in some cases
+* Bug fixed: excerpt & 'more' link showing the wrong page when using more than one page widget
 * Thanks to Lynne for pointing out bugs!
 = 2.0 =
 * Rewritten to use new widget API in WP 2.8
