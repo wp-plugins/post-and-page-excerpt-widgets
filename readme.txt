@@ -1,8 +1,9 @@
 === Post and Page Excerpt Widgets ===
 Contributors: sillybean
 Tags: widgets, excerpts
+Donate link: http://stephanieleary.com/code/wordpress/post-and-page-excerpt-widgets/
 Requires at least: 2.3
-Tested up to: 2.8.3
+Tested up to: 4.1
 Stable tag: 2.1
 
 
