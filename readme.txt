@@ -3,7 +3,7 @@ Contributors: sillybean
 Tags: widgets, excerpts
 Donate link: http://stephanieleary.com/code/wordpress/post-and-page-excerpt-widgets/
 Requires at least: 2.3
-Tested up to: 4.1
+Tested up to: 4.2
 Stable tag: 2.1
 
 
